@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Warehouse;
+use App\Distributor;
 use Illuminate\Http\Request;
 
-class warehouseController extends Controller
+class distributorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +14,16 @@ class warehouseController extends Controller
      */
     public function map()
     {
-        $title = "warehouse MAP";
-        $data = Warehouse::all();
+        $title = "Distributor MAP";
+        $data = Distributor::all();
         return view('map.map', compact('title', 'data'));
     }
 
     public function index()
     {
-        $title = "Warehouse Data";
-        $data = Warehouse::all();
-        return view('warehouse.index', compact('title', 'data'));
+        $data = Distributor::all();
+        $title = "Distributor Data";
+        return view('distributor.index', compact('title', 'data'));
     }
 
     /**
@@ -33,8 +33,8 @@ class warehouseController extends Controller
      */
     public function create()
     {
-        $title = "Add Warehouse";
-        return view('warehouse.add', compact('title'));
+        $title = "Distributor add";
+        return view('distributor.add', compact('title'));
     }
 
     /**
@@ -45,23 +45,23 @@ class warehouseController extends Controller
      */
     public function store(Request $request)
     {
-        Warehouse::create([
-            'name_warehouse' => $request->name_warehouse,
+        Distributor::create([
+            'name_distributor' => $request->name_distributor,
             'city' => $request->city,
             'location' => $request->location,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
-        return redirect('/warehouse/map');
+        return redirect('/distributor');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Warehouse  $warehouse
+     * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function show(Warehouse $warehouse)
+    public function show(Distributor $distributor)
     {
         //
     }
@@ -69,43 +69,33 @@ class warehouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Warehouse  $warehouse
+     * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Warehouse $warehouse)
+    public function edit(Distributor $distributor)
     {
-        $title = "warehouse edit";
-        return view('warehouse.edit', compact('title', 'warehouse'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Warehouse  $warehouse
+     * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Warehouse $warehouse)
+    public function update(Request $request, Distributor $distributor)
     {
-        $data = [
-            'name_warehouse' => $request->name_warehouse,
-            'city' => $request->city,
-            'location' => $request->location,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude
-        ];
-
-        Warehouse::where('id', $warehouse->id)->update($data);
-        return redirect('/warehouse');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Warehouse  $warehouse
+     * @param  \App\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Warehouse $warehouse)
+    public function destroy(Distributor $distributor)
     {
         //
     }
